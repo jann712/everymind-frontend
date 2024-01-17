@@ -30,6 +30,8 @@ export default function Produto(props: componentProps) {
   const handleClose = () => setOpen(false);
   const [price, setPrice] = useState<number>(29.99);
   const { register, handleSubmit, reset } = useForm<EditProdutoForm>();
+
+  // Esse hook deleta um produto após uma confirmação que aparece no modal
   const deleteMutation = useMutation({
     mutationFn: async () => {
       return await axios
@@ -45,6 +47,8 @@ export default function Produto(props: componentProps) {
       alert("Algo deu errado.")
     }
   });
+
+  //Esse hook atualiza o produto conforme as modifiçãoes aplicadas nos campos de entrada do formulário do modal
   const { mutate } = useMutation({
     mutationFn: async ({ name, desc, price }: EditProdutoForm) => {
       return await axios

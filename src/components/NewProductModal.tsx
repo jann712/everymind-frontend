@@ -27,6 +27,8 @@ function NewProductModal() {
   const handleClose = () => setOpen(false);
   const [price, setPrice] = useState<number>(29.99);
   const { register, handleSubmit, reset } = useForm<ProdutoForm>();
+
+  //Esse hook cria um novo produto após as informações serem inseridas no formulário do modal
   const { mutate } = useMutation({
     mutationFn: async ({ name, desc, price }: ProdutoForm) => {
       return await axios

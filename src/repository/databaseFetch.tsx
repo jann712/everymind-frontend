@@ -13,6 +13,8 @@ export type ProdutoModel = {
 
 export function AllProdutos() {
   const apiAddress = import.meta.env.VITE_API_ADDRESS
+
+  // Esse hook lê todos os produtos disponíveis no banco de dados através de uma requisição GET
   const { data, isFetching, isError, error } = useQuery<ProdutoModel[]>({
     queryKey: ["getAllProdutos"],
     queryFn: async () => {
