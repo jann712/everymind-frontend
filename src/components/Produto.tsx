@@ -84,6 +84,7 @@ export default function Produto(props: componentProps) {
             </button>
           </div>
         </div>
+        <span className="text-md">R${props.price}</span>
         <span className="text-sm">{props.desc}</span>
       </div>
       <Modal open={open} onClose={handleClose}>
