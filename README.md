@@ -1,4 +1,8 @@
 # everymind-frontend
+
+Link para projeto hospedado no Render  
+https://everymind-frontend.onrender.com/  
+
 Aplicativo de CRUD de uma loja fictícia de esportes "Nunes Sports" feito com Typescript e React-Query usando Vite.  
 
 Principais bibliotecas de Javascript usadas:  
