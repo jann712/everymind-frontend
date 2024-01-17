@@ -21,7 +21,7 @@ type componentProps = {
 };
 
 export default function Produto(props: componentProps) {
-  const apiAddress = import.meta.env.VITE_API_ADDRESS
+  const apiAddress = import.meta.env.VITE_API_ADDRESS;
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const handleOpenDelete = () => setOpenDelete(true);
@@ -39,13 +39,13 @@ export default function Produto(props: componentProps) {
         .then((response) => response.data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries()
-      alert("Produto deletado.")
+      queryClient.invalidateQueries();
+      alert("Produto deletado.");
     },
     onError: (error) => {
-      console.error(error)
-      alert("Algo deu errado.")
-    }
+      console.error(error);
+      alert("Algo deu errado.");
+    },
   });
 
   //Esse hook atualiza o produto conforme as modifiçãoes aplicadas nos campos de entrada do formulário do modal
@@ -60,7 +60,7 @@ export default function Produto(props: componentProps) {
         .then((response) => response.data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries()
+      queryClient.invalidateQueries();
       alert("Produto atualizado!");
     },
     onError: (error) => {
@@ -79,13 +79,18 @@ export default function Produto(props: componentProps) {
             <button onClick={handleOpen} className="items-center flex gap-1">
               <EditOutlinedIcon sx={{ fontSize: "2rem" }} />
             </button>
-            <button onClick={handleOpenDelete} className="items-center flex gap-1">
+            <button
+              onClick={handleOpenDelete}
+              className="items-center flex gap-1"
+            >
               <DeleteOutlineOutlinedIcon sx={{ fontSize: "2rem" }} />
             </button>
           </div>
         </div>
-        <span className="text-md">R${props.price}</span>
-        <span className="text-sm">{props.desc}</span>
+        <div className="flex flex-col">
+          <span className="text-md">R${props.price}</span>
+          <span className="text-sm">{props.desc}</span>
+        </div>
       </div>
       <Modal open={open} onClose={handleClose}>
         <div className="rounded bg-slate-50 absolute m-auto left-0 right-0 top-32 md:top-56 lg:top-44 w-3/4 md:w-2/4 md:h-1/2 lg:w-1/4 h-3/5">
@@ -143,8 +148,18 @@ export default function Produto(props: componentProps) {
                 Confirmar deleção de produto?
               </h3>
               <div className="flex">
-                <button onClick={() => deleteMutation.mutate()} className="w-full rounded bg-red-200 mx-3">Sim</button>
-                <button onClick={handleCloseDelete} className="w-full rounded bg-slate-200 mx-3">Não</button>
+                <button
+                  onClick={() => deleteMutation.mutate()}
+                  className="w-full rounded bg-red-200 mx-3"
+                >
+                  Sim
+                </button>
+                <button
+                  onClick={handleCloseDelete}
+                  className="w-full rounded bg-slate-200 mx-3"
+                >
+                  Não
+                </button>
               </div>
             </div>
           </div>
